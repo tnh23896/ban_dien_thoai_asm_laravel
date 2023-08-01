@@ -1,7 +1,8 @@
 @extends('admin.layout')
+@section('title', 'người dùng')
 @section('content')
 
-<h2>Danh sách danh mục</h2>
+<h2>Danh sách người dùng</h2>
 <div class="table-responsive small">
   <table class="table table-striped table-sm">
     <thead>

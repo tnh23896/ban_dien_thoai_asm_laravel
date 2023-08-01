@@ -1,7 +1,8 @@
 @extends('admin.layout')
+@section('title', 'Hóa đơn')
 @section('content')
 
-<h2>Danh sách danh mục</h2>
+<h2>Danh sách hóa đơn</h2>
 <div class="table-responsive small">
   <table class="table table-striped table-sm">
     <thead>

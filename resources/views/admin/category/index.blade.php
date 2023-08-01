@@ -1,4 +1,6 @@
 @extends('admin.layout')
+@section('title', 'Danh mục')
+
 @section('content')
 
 <h2>Danh sách danh mục</h2>

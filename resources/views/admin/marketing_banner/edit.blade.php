@@ -1,4 +1,5 @@
 @extends('admin.layout')
+@section('title', 'Banner')
 @section('content')
 
 <h2>Chinh sua</h2>

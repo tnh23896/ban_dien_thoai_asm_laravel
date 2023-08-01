@@ -1,7 +1,8 @@
 @extends('admin.layout')
+@section('title', 'Giảm giá')
 @section('content')
 
-<h2>Danh sách danh mục</h2>
+<h2>Danh sách giảm giá</h2>
 <a href="{{route('admin.promotion.create')}}" class="btn btn-primary">Thêm</a>
 <div class="table-responsive small">
   <table class="table table-striped table-sm">

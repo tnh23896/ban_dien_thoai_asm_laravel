@@ -8,7 +8,8 @@
   <meta name="description" content="">
   <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
   <meta name="generator" content="Hugo 0.112.5">
-  <title>Dashboard Template · Bootstrap v5.3</title>
+  <title>@yield('title')</title>
+  <script src="https://kit.fontawesome.com/86807bc2b2.js" crossorigin="anonymous"></script>
 
   <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
 
@@ -279,75 +280,58 @@
               <li class="nav-item">
                 <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page"
                   href="#">
-                  <svg class="bi">
-                    <use xlink:href="#house-fill" />
-                  </svg>
+                  <i class="fa-solid fa-house" style="color: #25b148;"></i>
                   Dashboard
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link d-flex align-items-center gap-2" href="{{route('admin.brand.index')}}">
-                  <svg class="bi">
-                    <use xlink:href="#file-earmark" />
-                  </svg>
+                  <i class="fa-solid fa-ghost" style="color: #771094;"></i>
                   Hãng      
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link d-flex align-items-center gap-2" href="{{route('admin.category.index')}}">
-                  <svg class="bi">
-                    <use xlink:href="#file-earmark" />
-                  </svg>
+                  <i class="fa-solid fa-list" style="color: #ae8a0a;"></i>
                   Danh mục                
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link d-flex align-items-center gap-2" href="{{route('admin.invoice.index')}}">
-                  <svg class="bi">
-                    <use xlink:href="#file-earmark" />
-                  </svg>
+                  <i class="fa-solid fa-money-bill" style="color: #40a923;"></i>
                   Hóa đơn                
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link d-flex align-items-center gap-2" href="{{route('admin.marketing_banner.index')}}">
-                  <svg class="bi">
-                    <use xlink:href="#file-earmark" />
-                  </svg>
+                  <i class="fa-regular fa-compass" style="color: #0b8e98;"></i>
                   Banner                
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link d-flex align-items-center gap-2" href="{{route('admin.phone.index')}}">
-                  <svg class="bi">
-                    <use xlink:href="#cart" />
-                  </svg>
+                  <i class="fa-solid fa-cart-shopping" style="color: #45b7bf;"></i>
                   Sản phẩm
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link d-flex align-items-center gap-2" href="{{route('admin.promotion.index')}}">
-                  <svg class="bi">
-                    <use xlink:href="#people" />
-                  </svg>
+                  <i class="fa-solid fa-tags" style="color: #ce69ae;"></i>
+
                   Phiếu giảm giá
                 </a>
               </li>
               
               <li class="nav-item">
                 <a class="nav-link d-flex align-items-center gap-2" href="{{route('admin.review.index')}}">
-                  <svg class="bi">
-                    <use xlink:href="#people" />
-                  </svg>
+                  <i class="fa-solid fa-star" style="color: #0ba842;"></i>
                   Đánh giá
                 </a>
               </li>
               
               <li class="nav-item">
                 <a class="nav-link d-flex align-items-center gap-2" href="{{route('admin.user.index')}}">
-                  <svg class="bi">
-                    <use xlink:href="#people" />
-                  </svg>
+                  <i class="fa-solid fa-address-card" style="color: #127ef3;"></i>
                   Người dùng
                 </a>
               </li>
@@ -362,9 +346,7 @@
            
               <li class="nav-item">
                 <a class="nav-link d-flex align-items-center gap-2" href="{{route('logout')}}">
-                  <svg class="bi">
-                    <use xlink:href="#door-closed" />
-                  </svg>
+                  <i class="fa-solid fa-door-open" style="color: #72d54d;"></i>
                   Đăng xuất
                 </a>
               </li>
@@ -376,20 +358,8 @@
       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
         <div
           class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-          <h1 class="h2">Dashboard</h1>
-          <div class="btn-toolbar mb-2 mb-md-0">
-            <div class="btn-group me-2">
-              <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-              <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
-            </div>
-            <button type="button"
-              class="btn btn-sm btn-outline-secondary dropdown-toggle d-flex align-items-center gap-1">
-              <svg class="bi">
-                <use xlink:href="#calendar3" />
-              </svg>
-              This week
-            </button>
-          </div>
+          <h1 class="h2">@yield('title')</h1>
+        
         </div>
 @include('templates.error')
        @yield('content')

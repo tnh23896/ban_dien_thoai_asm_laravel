@@ -1,7 +1,8 @@
 @extends('admin.layout')
+@section('title', 'Điện thoại')
 @section('content')
 
-<h2>Danh sách danh mục</h2>
+<h2>Danh sách điện thoại</h2>
 <a href="{{route('admin.phone.create')}}" class="btn btn-primary">Thêm</a>
 <div class="table-responsive small">
   <table class="table table-striped table-sm">

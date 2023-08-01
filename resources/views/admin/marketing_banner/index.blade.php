@@ -1,7 +1,8 @@
 @extends('admin.layout')
+@section('title', 'Banner')
 @section('content')
 
-<h2>Danh sách danh mục</h2>
+<h2>Danh sách banner</h2>
 <a href="{{route('admin.marketing_banner.create')}}" class="btn btn-primary">Tạo mới</a>
 <div class="table-responsive small">
   <table class="table table-striped table-sm">

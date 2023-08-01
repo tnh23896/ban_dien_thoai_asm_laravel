@@ -1,7 +1,9 @@
 @extends('admin.layout')
+@section('title', 'Hãng')
+    
 @section('content')
 
-<h2>Danh sách danh mục</h2>
+<h2>Danh sách hãng</h2>
 <a href="{{route('admin.brand.create')}}" class="btn btn-primary">Thêm</a>
 <div class="table-responsive small">
   <table class="table table-striped table-sm">

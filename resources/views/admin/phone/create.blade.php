@@ -1,4 +1,5 @@
 @extends('admin.layout')
+@section('title', 'Điện thoại')
 @section('content')
 
 <h2>Thêm mới</h2>

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\PhoneController;
 use App\Http\Controllers\Client\CartController;
@@ -37,6 +38,7 @@ Route::match(['get', 'post'], '/register', [AuthController::class, 'register'])-
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function () {
+  Route::get('/', [AdminController::class, 'index'])->name('admin');
   //brand
   Route::get('/brand', [BrandController::class, 'index'])->name('admin.brand.index');
   Route::match(['get', 'post'], '/brand/create', [BrandController::class, 'create'])->name('admin.brand.create');

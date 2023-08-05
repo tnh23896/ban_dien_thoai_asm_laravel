@@ -1,140 +1,76 @@
 @extends('admin.layout')
 @section('title', 'Dashboard')
 @section('content')
+
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-3">
+      <div class="card text-center">
+        <div class="card-body">
+          <i class="bi bi-cart-plus"></i>
+          <h3 class="fs-5">Tổng sản phẩm</h3>
+          <h2 class="card-text text-xxl text-primary fw-bold">{{$count_phones}}</h2>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-3">
+      <div class="card text-center">
+        <div class="card-body">
+          <i class="bi bi-currency-dollar"></i>
+          <h3 class="fs-5">Tổng doanh thu</h3>  
+          <h2 class="card-text text-xxl text-success fw-bold">{{$sum_invoices}}</h2>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-3">
+      <div class="card text-center">
+        <div class="card-body">
+          <i class="bi bi-truck"></i>
+          <h3 class="fs-5">Đơn hàng đã giao</h3>
+          <h2 class="card-text text-xxl text-primary fw-bold">{{$order_delivered}}</h2>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-3">
+      <div class="card text-center">
+        <div class="card-body">
+          <i class="bi bi-hourglass-split"></i>
+          <h3 class="fs-5">Đơn hàng chờ giao</h3>
+          <h2 class="card-text text-xxl text-success fw-bold">{{$order_pending}}</h2>
+        </div>
+      </div>
+    </div>
+  
+  </div>
+</div>
+<h3 class="my-5">Doanh thu trong tuần</h3>
 <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
 
-<h2>Dashboard</h2>
-<div class="table-responsive small">
-  <table class="table table-striped table-sm">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Header</th>
-        <th scope="col">Header</th>
-        <th scope="col">Header</th>
-        <th scope="col">Header</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>1,001</td>
-        <td>random</td>
-        <td>data</td>
-        <td>placeholder</td>
-        <td>text</td>
-      </tr>
-      <tr>
-        <td>1,002</td>
-        <td>placeholder</td>
-        <td>irrelevant</td>
-        <td>visual</td>
-        <td>layout</td>
-      </tr>
-      <tr>
-        <td>1,003</td>
-        <td>data</td>
-        <td>rich</td>
-        <td>dashboard</td>
-        <td>tabular</td>
-      </tr>
-      <tr>
-        <td>1,003</td>
-        <td>information</td>
-        <td>placeholder</td>
-        <td>illustrative</td>
-        <td>data</td>
-      </tr>
-      <tr>
-        <td>1,004</td>
-        <td>text</td>
-        <td>random</td>
-        <td>layout</td>
-        <td>dashboard</td>
-      </tr>
-      <tr>
-        <td>1,005</td>
-        <td>dashboard</td>
-        <td>irrelevant</td>
-        <td>text</td>
-        <td>placeholder</td>
-      </tr>
-      <tr>
-        <td>1,006</td>
-        <td>dashboard</td>
-        <td>illustrative</td>
-        <td>rich</td>
-        <td>data</td>
-      </tr>
-      <tr>
-        <td>1,007</td>
-        <td>placeholder</td>
-        <td>tabular</td>
-        <td>information</td>
-        <td>irrelevant</td>
-      </tr>
-      <tr>
-        <td>1,008</td>
-        <td>random</td>
-        <td>data</td>
-        <td>placeholder</td>
-        <td>text</td>
-      </tr>
-      <tr>
-        <td>1,009</td>
-        <td>placeholder</td>
-        <td>irrelevant</td>
-        <td>visual</td>
-        <td>layout</td>
-      </tr>
-      <tr>
-        <td>1,010</td>
-        <td>data</td>
-        <td>rich</td>
-        <td>dashboard</td>
-        <td>tabular</td>
-      </tr>
-      <tr>
-        <td>1,011</td>
-        <td>information</td>
-        <td>placeholder</td>
-        <td>illustrative</td>
-        <td>data</td>
-      </tr>
-      <tr>
-        <td>1,012</td>
-        <td>text</td>
-        <td>placeholder</td>
-        <td>layout</td>
-        <td>dashboard</td>
-      </tr>
-      <tr>
-        <td>1,013</td>
-        <td>dashboard</td>
-        <td>irrelevant</td>
-        <td>text</td>
-        <td>visual</td>
-      </tr>
-      <tr>
-        <td>1,014</td>
-        <td>dashboard</td>
-        <td>illustrative</td>
-        <td>rich</td>
-        <td>data</td>
-      </tr>
-      <tr>
-        <td>1,015</td>
-        <td>random</td>
-        <td>tabular</td>
-        <td>information</td>
-        <td>text</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+
 @endsection
 @section('scripts')
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.2.1/dist/chart.umd.min.js"
 integrity="sha384-gdQErvCNWvHQZj6XZM0dNsAoY4v+j5P1XDpNkcM3HJG1Yx04ecqIHk7+4VBOCHOG"
 crossorigin="anonymous"></script>
-<script src="{{asset('js/dashboard.js')}}"></script>
+{{-- <script src="{{asset('js/dashboard.js')}}"></script> --}}
+<script>
+
+  var ctx = document.getElementById("myChart").getContext('2d');
+
+  var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: {!! json_encode($invoices->pluck('date')) !!},
+        datasets: [{
+            label: 'Doanh thu',
+            data: {!! json_encode($invoices->pluck('sum')) !!},
+        }]
+    }
+  });
+
+</script>
 @endsection

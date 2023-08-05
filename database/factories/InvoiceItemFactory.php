@@ -21,8 +21,8 @@ class InvoiceItemFactory extends Factory
 
 
         return [
-            'invoice_id' => fake()->numberBetween(1, 10),
-            'phone_id' => fake()->numberBetween(1, 10),
+            'invoice_id' => fake()->numberBetween(1, 5),
+            'phone_id' => fake()->numberBetween(1, 9),
             'quantity' => fake()->randomNumber(2),
             'price' => fake()->numberBetween(900, 1000),
             'total' => fake()->numberBetween(900, 1000),

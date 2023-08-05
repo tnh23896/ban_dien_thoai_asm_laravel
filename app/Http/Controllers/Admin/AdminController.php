@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\Invoice;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 
 class AdminController extends Controller
 {
@@ -14,7 +16,18 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.dashboard');
+        $startDate = now()->startOfWeek(); // Lấy ngày đầu tuần
+        $endDate = now()->endOfWeek(); // Lấy ngày cuối tuần
+        $invoices = Invoice::whereBetween('created_at', [$startDate, $endDate])->where('status', 1)
+            ->selectRaw('DATE(created_at) as date, SUM(total_amount) as sum')
+            ->groupBy('date')
+            ->get();
+        // select count phones
+        $count_phones = DB::table('phones')->count();
+        $sum_invoices = DB::table('invoices')->where('status', 1)->sum('total_amount');
+        $order_delivered = DB::table('invoices')->where('status', 1)->count();
+        $order_pending = DB::table('invoices')->where('status', 0)->count();
+        return view('admin.dashboard', compact('invoices', 'count_phones', 'sum_invoices', 'order_delivered', 'order_pending'));
     }
 
     /**

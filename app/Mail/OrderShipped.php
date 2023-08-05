@@ -2,13 +2,15 @@
 
 namespace App\Mail;
 
+use App\Models\Invoice;
+use App\Models\InvoiceItem;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
-use Illuminate\Mail\Mailables\Content;
-use Illuminate\Mail\Mailables\Envelope;
-use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Mail\Mailables\Content;
+use Illuminate\Queue\SerializesModels;
+use Illuminate\Mail\Mailables\Envelope;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
 class OrderShipped extends Mailable
 {
@@ -46,9 +48,10 @@ class OrderShipped extends Mailable
     {
         return new Content(
             view: 'emails.order_shipped',
-            with: [
+            with: [ 
                 'name' => Auth::user()->name,
-                'orderId' => $this->orderId
+                'order' => Invoice::find($this->orderId),
+                'order_details'=>InvoiceItem::where('invoice_id', $this->orderId)->get()
             ],
         );
     }

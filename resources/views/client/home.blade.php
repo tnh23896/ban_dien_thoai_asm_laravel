@@ -13,7 +13,7 @@
 
   <div class="carousel-inner">
     @foreach($banners as $key => $banner)
-    <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
+    <a href="{{route('client.detail',['phone'=>$banner->id])}}" class="text-decoration-none carousel-item {{ $key == 0 ? 'active' : '' }}">
       <div class="container">
         <div class="row p-5">
           <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
@@ -25,13 +25,13 @@
             <div class="text-align-left align-self-center">
               <h1 class="h1 text-success"><b>{{ $banner->name }}</b></h1>
 
-              <p>{{ $banner->description }}</p>
+              <p class="text-muted">{{ $banner->description }}</p>
             </div>
           </div>
 
         </div>
       </div>
-    </div>
+    </a>
     @endforeach
 
   </div>
@@ -47,7 +47,22 @@
 
 </div>
 <!-- End Banner Hero -->
+<!-- Start Category -->
+  <div class="container my-5">
+    <div class="row">
+  @foreach ($categories as $category)
+  <div class="col-lg-3 col-md-4 mb-4">
+    <div class="card">
+      <div class="card-body">
+       <a class="text-decoration-none text-dark" href="{{route('client.home',['category'=>$category->id])}}"><h5 class="card-title">{{ $category->name }}</h5></a>
+      </div>
+    </div>
+  </div>
 
+  @endforeach        
+    </div>
+  </div>
+<!-- End Category -->
 <!-- Start Featured Product -->
 <section class="bg-light">
   <div class="container py-5">

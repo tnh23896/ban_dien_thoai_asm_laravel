@@ -23,7 +23,6 @@ return new class extends Migration
             $table->integer('quantity');
             $table->decimal('price', 10, 0); 
             $table->text('description'); 
-            $table->string('banner_id')->nullable();
             $table->timestamps();
             $table->softDeletes();
             

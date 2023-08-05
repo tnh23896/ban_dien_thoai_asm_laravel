@@ -1,6 +1,15 @@
 <div class="card border-0 shadow">
-  <div class="badge bg-danger text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Hot
+  @php
+  $reviews_by_phone = DB::table('reviews')
+->where('phone_id', $phone->id)
+->get();
+$promotion = DB::table('phones')->join('promotions', 'promotions.id', '=', 'phones.promotion_id')->select('promotions.*')->where('phones.id', $phone->id)->first();
+@endphp
+@if ($promotion != null)
+
+  <div class="badge bg-danger text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Giảm {{formatNumberPrice($promotion->discount)}}
   </div>
+@endif
   <a href="{{ route('client.detail', ['phone' => $phone->id]) }}">
     <img src="{{ Storage::url($phone->image) }}" class="card-img-top">
     <div class="card-body d-flex flex-column">
@@ -11,12 +20,7 @@
         <a href="#" class="text-muted text-decoration-none">{{ $phone->category_name
           }}</a>
       </p>
-      @php
-           $reviews_by_phone = DB::table('reviews')
-    ->where('phone_id', $phone->id)
-    ->get();
-    $promotion = DB::table('phones')->join('promotions', 'promotions.id', '=', 'phones.promotion_id')->select('promotions.*')->where('phones.id', $phone->id)->first();
-      @endphp
+  
 
       <div class="">
         @if ($reviews_by_phone->count() > 0)

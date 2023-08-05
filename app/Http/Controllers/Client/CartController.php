@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Client;
 use App\Models\Phone;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class CartController extends Controller
@@ -36,7 +37,8 @@ class CartController extends Controller
             ]
         ];
         
-        if($phone->promotion_id != null){
+        if($phone->promotion_id != null && $promotion){
+          
           $currentDate = now();
           $checkDate = $currentDate->between($promotion->start_date, $promotion->end_date);
           if($checkDate){
@@ -57,7 +59,7 @@ class CartController extends Controller
             "quantity" =>$request->quantity??1,
             "discount" => 0,
           ];
-          if($phone->promotion_id != null){
+          if($phone->promotion_id != null && $promotion){
             $currentDate = now();
             $checkDate = $currentDate->between($promotion->start_date, $promotion->end_date);
             if($checkDate){

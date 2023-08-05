@@ -72,6 +72,11 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('logout')}}">Đăng xuất</a>
                         </li>
+                        @if (Auth::user()->role == 1)
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('admin')}}">Admin</a>
+                        </li>
+                        @endif
                         @else
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('login')}}">Đăng nhập</a>
@@ -79,7 +84,6 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('register')}}">Đăng ký</a>
                         </li>
-                        
                         @endif
                     </ul>
                 </div>

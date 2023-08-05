@@ -20,7 +20,7 @@ class MarketingBannerFactory extends Factory
             'name' => fake()->word,
             'description' => fake()->sentence,
             'image' => 'images/brand_01.png',
-            'phone_id' => 1,
+            'phone_id' => fake()->numberBetween(1, 9),
             'created_at' => now(),
             'updated_at' => now(),
         ];

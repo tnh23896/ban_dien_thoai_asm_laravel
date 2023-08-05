@@ -15,6 +15,6 @@ class MarketingBannerSeeder extends Seeder
      */
     public function run()
     {
-        MarketingBanner::factory()->count(1)->create();
+        MarketingBanner::factory()->count(3)->create();
     }
 }

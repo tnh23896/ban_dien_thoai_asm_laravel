@@ -17,7 +17,7 @@ class ReviewFactory extends Factory
     public function definition()
     {
         return [
-            'phone_id' => fake()->numberBetween(1, 10),
+            'phone_id' => fake()->numberBetween(1, 9),
             'user_id' => fake()->numberBetween(1, 10),
             'comment' => fake()->text(100),
             'rating' => fake()->numberBetween(1, 5),

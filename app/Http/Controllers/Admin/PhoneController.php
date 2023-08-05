@@ -61,10 +61,16 @@ public function edit(PhoneRequest $request, Phone $phone)
         $params = $request->except('_token');
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
+          // dien-thoai-iphone-11-pro-max-1.jpg
+          if($phone->image != 'images/dien-thoai-iphone-11-pro-max-1.jpg') {
             $storageDL = Storage::delete("/public/" . $phone->image);
             if ($storageDL) {
                 $params['image'] = uploadFile("images", $request->file('image'));
             }
+          }else {
+            $params['image'] = uploadFile("images", $request->file('image'));
+          }
+          
         } else {
             $params['image'] = $phone->image;
         }
